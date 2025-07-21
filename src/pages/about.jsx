@@ -1,6 +1,7 @@
-import Navbar from "../components/nav";
-import AboutImg from "../assets/aboutimg.jpeg";
+import Navbar from "../components/navbar.jsx";
+import AboutImg from "../images/aboutimg.jpeg";
 import { Link } from "react-router-dom";
+import Footer from "../components/footer.jsx";
 
 const About = () => {
   return (
@@ -121,6 +122,7 @@ const About = () => {
             </div>
           </div>
         </div>
+        <Footer />
     </div>
   );
 };

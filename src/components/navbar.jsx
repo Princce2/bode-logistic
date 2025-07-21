@@ -1,6 +1,9 @@
 import Bodelogo from "../images/Bodelogo.jpg";
 import { CgProfile } from "react-icons/cg";
 import { IoLocationOutline } from "react-icons/io5";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import "../i18n";
 
 const Navbar = () => {
   const languages = [
@@ -27,6 +30,24 @@ const Navbar = () => {
     { code: "th", name: "Thai" },
   ];
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedLang, setSelectedLang] = useState("en");
+  const { t, i18n } = useTranslation();
+
+  // Search handler
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      alert(`Searching for: ${searchTerm}`);
+    }
+  };
+
+  // Language change handler
+  const handleLanguageChange = (e) => {
+    setSelectedLang(e.target.value);
+    i18n.changeLanguage(e.target.value);
+  };
+
   return (
     <nav className="bg-gray-900 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,31 +58,36 @@ const Navbar = () => {
               src={Bodelogo}
               alt="Bode Logistics Logo"
             />
-            <p>Services</p>
-            <p>Careers</p>
-            <p>Contact Us</p>
+            <p>{t("services")}</p>
+            <p>{t("careers")}</p>
+            <p>{t("contact")}</p>
           </div>
           <div className="flex items-center space-x-4">
             <div className="items-center flex flex-col space-x-2">
               <CgProfile />
-              <p>Bode Hub</p>
+              <p>{t("bodeHub")}</p>
             </div>
             <div className="items-center flex flex-col space-x-2">
               <IoLocationOutline />
-              <p>Track Shipment</p>
+              <p>{t("trackShipment")}</p>
             </div>
             <div className="items-center flex flex-col">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <form onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  placeholder={t("searchPlaceholder")}
+                  className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </form>
             </div>
             {/* Language Selector (name only) */}
             <div>
               <select
                 className="bg-gray-800 text-white px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                defaultValue="en"
+                value={selectedLang}
+                onChange={handleLanguageChange}
               >
                 {languages.map((lang) => (
                   <option key={lang.code} value={lang.code}>

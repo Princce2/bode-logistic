@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "./components/navbar";
+import Navbar from "./components/navbar.jsx";
 import LogisticsVideo from "./videos/Logistics1.mp4";
 import { FaChevronRight } from "react-icons/fa";
 import Slider1 from "./images/slider1.webp";
@@ -9,6 +9,8 @@ import Gender from "./images/gender.jpeg";
 import Studies from "./images/studies.jpeg";
 import DigitalFreight from "./images/DigitalFreight.jpeg";
 import { Link } from "react-router-dom";
+import Trackcatch from "./components/trackcatch.jsx";
+import Footer from "./components/footer.jsx";
 
 const slides = [
   {
@@ -33,37 +35,12 @@ const slides = [
   },
 ];
 
-// Mock data for tracking
-const mockTrackingData = {
-  123456: {
-    status: "In Transit",
-    location: "Lagos, Nigeria",
-    estimatedDelivery: "July 22, 2025",
-  },
-  789012: {
-    status: "Delivered",
-    location: "Abuja, Nigeria",
-    estimatedDelivery: "July 19, 2025",
-  },
-};
-
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [trackingNumber, setTrackingNumber] = useState("");
-  const [trackingResult, setTrackingResult] = useState(null);
   const [activeTab, setActiveTab] = useState("track");
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % slides.length);
-  };
-
-  const handleTrack = () => {
-    const result = mockTrackingData[trackingNumber] || {
-      status: "Not Found",
-      location: "N/A",
-      estimatedDelivery: "N/A",
-    };
-    setTrackingResult(result);
   };
 
   return (
@@ -169,44 +146,11 @@ const App = () => {
                     <h3 className="text-xl font-bold text-white mb-4">
                       Track Your Shipment
                     </h3>
-                    <div className="flex flex-col md:flex-row items-center gap-4 w-full max-w-xl mx-auto">
-                      <input
-                        type="text"
-                        placeholder="Enter Tracking Number"
-                        value={trackingNumber}
-                        onChange={(e) => setTrackingNumber(e.target.value)}
-                        className="flex-1 px-4 py-3 rounded-xl border border-gray-700 bg-[#111827] text-white placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                      <button
-                        onClick={handleTrack}
-                        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300"
-                      >
-                        Track
-                      </button>
+                    <div className="">
+                      <Trackcatch />
                     </div>
-
-                    {trackingResult && (
-                      <div className="mt-8 bg-[#1F2937] border border-blue-800/20 p-6 rounded-2xl max-w-xl mx-auto text-left shadow-md">
-                        <h4 className="text-lg font-semibold mb-2 text-white">
-                          Tracking Details
-                        </h4>
-                        <div className="space-y-1 text-sm text-gray-300">
-                          <p>
-                            <strong>Status:</strong> {trackingResult.status}
-                          </p>
-                          <p>
-                            <strong>Location:</strong> {trackingResult.location}
-                          </p>
-                          <p>
-                            <strong>Estimated Delivery:</strong>{" "}
-                            {trackingResult.estimatedDelivery}
-                          </p>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 )}
-
                 {activeTab === "bodehub" && (
                   <div className="text-center w-full">
                     <h3 className="text-xl font-bold text-white mb-4">
@@ -463,6 +407,103 @@ const App = () => {
         </div>
       </section>
 
+      {/* NEWSROOM Section */}
+      <section className="bg-gray-900 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-extrabold text-center text-blue-100 mb-12 tracking-tight">
+            BODE LOGISTICS NEWSROOM
+          </h2>
+          <div className="flex flex-col md:flex-row gap-10 items-center mb-16">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+              alt="News Main"
+              className="w-full md:w-1/2 h-64 object-cover rounded-xl shadow-lg"
+            />
+            <div className="flex-1">
+              <div className="flex items-center gap-4 mb-2">
+                <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">
+                  Press release
+                </span>
+                <span className="text-gray-400 text-sm">4/25/2025</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-blue-100 mb-4">
+                Bode Logistics signs deal to acquire Borusan Tedarik, expand in
+                Turkey
+              </h3>
+              <p className="text-gray-300 mb-6">
+                Bode agrees to share transfer agreement for 100% of Borusan
+                Tedarik
+              </p>
+              <button className="border-2 border-blue-100 text-blue-100 font-semibold px-6 py-2 rounded transition hover:bg-blue-100 hover:text-gray-900">
+                LEARN MORE
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            <div className="bg-[#1F2937] rounded-xl shadow-lg overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+                alt="Interview"
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="bg-blue-100 text-gray-900 text-xs font-bold px-3 py-1 rounded">
+                    Interview
+                  </span>
+                  <span className="text-gray-400 text-sm">3/19/2025</span>
+                </div>
+                <h4 className="text-lg font-bold text-blue-100 mb-2">
+                  Building the Future of Supply Chain
+                </h4>
+              </div>
+            </div>
+            <div className="bg-[#1F2937] rounded-xl shadow-lg overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=400&q=80"
+                alt="Article"
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="bg-gray-700 text-white text-xs font-bold px-3 py-1 rounded">
+                    Article
+                  </span>
+                  <span className="text-gray-400 text-sm">4/2/2025</span>
+                </div>
+                <h4 className="text-lg font-bold text-blue-100 mb-2">
+                  Bode Logistics 2024 CSR Summary Report
+                </h4>
+              </div>
+            </div>
+            <div className="bg-[#1F2937] rounded-xl shadow-lg overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+                alt="Press Release"
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">
+                    Press release
+                  </span>
+                  <span className="text-gray-400 text-sm">3/28/2025</span>
+                </div>
+                <h4 className="text-lg font-bold text-blue-100 mb-2">
+                  Bode Logistics Expands Global Air Freight Capacity with WUX
+                  (China) to ORD (U.S.) Air Charter
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <button className="border-2 border-blue-100 text-blue-100 font-semibold px-8 py-2 rounded transition hover:bg-blue-100 hover:text-gray-900">
+              SEE ALL NEWS
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Join Us Section */}
       <section className="bg-gray-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -480,6 +521,8 @@ const App = () => {
           </p>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };
