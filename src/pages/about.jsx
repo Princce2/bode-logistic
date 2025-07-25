@@ -1,5 +1,5 @@
-import Navbar from "../components/nav";
-import AboutImg from "../assets/aboutimg.jpeg";
+import Navbar from "../components/navbar.jsx";
+import AboutImg from "../images/aboutimg.jpeg";
 import { Link } from "react-router-dom";
 
 const About = () => {

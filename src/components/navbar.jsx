@@ -1,6 +1,7 @@
 import Bodelogo from "../images/Bodelogo.jpg";
 import { CgProfile } from "react-icons/cg";
 import { IoLocationOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const languages = [
@@ -48,7 +49,7 @@ const Navbar = () => {
             </div>
             <div className="items-center flex flex-col space-x-2">
               <IoLocationOutline />
-              <p>Track Shipment</p>
+              <Link to="/track">Track Shipment</Link>
             </div>
             <div className="items-center flex flex-col">
               <input

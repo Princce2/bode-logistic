@@ -9,6 +9,8 @@ import MouseFollower from "./components/MouseFollower";
 import Navbar from "./components/navbar";
 import Create from "./pages/create";
 import About from "./pages/about";
+import Track from "./pages/Track";
+import Dispatch from "./pages/dispatch";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +23,8 @@ root.render(
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/create" element={<Create />} />
         <Route path="/about" element={<About />} />
+        <Route path="/track" element={<Track />} />
+        <Route path="/dispatch" element={<Dispatch />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
