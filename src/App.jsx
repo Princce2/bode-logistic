@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Navbar from "./components/navbar.jsx";
 import LogisticsVideo from "./videos/Logistics1.mp4";
 import { FaChevronRight } from "react-icons/fa";
@@ -12,32 +13,31 @@ import { Link } from "react-router-dom";
 import Trackcatch from "./components/trackcatch.jsx";
 import Footer from "./components/footer.jsx";
 
-const slides = [
-  {
-    type: "video",
-    src: LogisticsVideo,
-    title: "ABOUT BODE LOGISTICS",
-    description:
-      "Discover our origin story, commitment to excellence, and how we deliver seamless logistics solutions across the globe.",
-  },
-  {
-    type: "image",
-    src: Slider1,
-    title: "DARE TO GROW",
-    description:
-      "Empowering people and building logistics excellence together.",
-  },
-  {
-    type: "image",
-    src: Slider2,
-    title: "ENGINEERING WINNING SOLUTIONS",
-    description: "Smart solutions that move your business forward.",
-  },
-];
-
 const App = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("track");
+
+  const slides = [
+    {
+      type: "video",
+      src: LogisticsVideo,
+      title: t("common.about_bode_logistics"),
+      description: t("common.about_bode_logistics_description"),
+    },
+    {
+      type: "image",
+      src: Slider1,
+      title: t("common.dare_to_grow"),
+      description: t("common.dare_to_grow_description"),
+    },
+    {
+      type: "image",
+      src: Slider2,
+      title: t("common.engineering_winning_solutions"),
+      description: t("common.engineering_winning_solutions_description"),
+    },
+  ];
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % slides.length);
@@ -85,7 +85,7 @@ const App = () => {
                     data-aos-delay={isActive ? "500" : "400"}
                   >
                     <source src={slide.src} type="video/mp4" />
-                    Your browser does not support the video tag.
+                    {t("common.video_unsupported")}
                   </video>
                 ) : (
                   <img
@@ -126,14 +126,14 @@ const App = () => {
                           {slide.description}
                         </p>
                         {slide.type === "video" &&
-                        slide.title === "ABOUT BODE LOGISTICS" ? (
+                        slide.title === t("common.about_bode_logistics") ? (
                           <Link
                             to="/about"
                             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-semibold text-sm inline-block"
                             data-aos="zoom-in"
                             data-aos-delay="1000"
                           >
-                            Learn More
+                            {t("common.learn_more")}
                           </Link>
                         ) : (
                           <button
@@ -141,7 +141,7 @@ const App = () => {
                             data-aos="zoom-in"
                             data-aos-delay="1000"
                           >
-                            Learn More
+                            {t("common.learn_more")}
                           </button>
                         )}
                       </>
@@ -202,7 +202,7 @@ const App = () => {
                     data-aos="fade-right"
                     data-aos-delay="700"
                   >
-                    {tab === "track" ? "Track & Trace" : "Bode Hub"}
+                    {tab === "track" ? t("common.track_and_trace") : t("navbar.bodeHub")}
                   </button>
                 ))}
               </div>
@@ -224,7 +224,7 @@ const App = () => {
                       data-aos="fade-left"
                       data-aos-delay="1000"
                     >
-                      Track Your Shipment
+                      {t("common.track_your_shipment")}
                     </h3>
                     <Trackcatch data-aos="fade-up" data-aos-delay="1100" />
                   </div>
@@ -240,24 +240,21 @@ const App = () => {
                       data-aos="fade-right"
                       data-aos-delay="1000"
                     >
-                      Bode Hub
+                      {t("navbar.bodeHub")}
                     </h3>
                     <p
                       className="text-gray-400 mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm md:text-base px-2 sm:px-0"
                       data-aos="fade-up"
                       data-aos-delay="1100"
                     >
-                      Log in or sign up to Bode Hub to enjoy the full features.
-                      Quote, book and ship all over the world, and manage your
-                      cargo end-to-end via a single platform as of 10:43 PM WAT,
-                      July 23, 2025.
+                      {t("common.bode_hub_description")}
                     </p>
                     <button
                       className="px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300 text-xs sm:text-sm md:text-base"
                       data-aos="zoom-in"
                       data-aos-delay="1200"
                     >
-                      Get Started with Bode Hub
+                      {t("common.get_started_bode_hub")}
                     </button>
                   </div>
                 )}
@@ -288,18 +285,14 @@ const App = () => {
               data-aos="fade-up"
               data-aos-delay="500"
             >
-              Global Logistics Excellence
+              {t("common.global_logistics_excellence")}
             </h2>
             <p
               className="text-lg text-gray-400 max-w-3xl mx-auto"
               data-aos="fade-down"
               data-aos-delay="600"
             >
-              At Bode Logistics, we redefine global trade with unmatched
-              precision and innovation. Our world-class infrastructure spans
-              over 50 countries, ensuring your goods move seamlessly from origin
-              to destination with cutting-edge technology and expert oversight
-              as of July 21, 2025.
+              {t("common.global_logistics_excellence_description")}
             </p>
           </div>
           <div
@@ -324,17 +317,14 @@ const App = () => {
                 data-aos="fade-up"
                 data-aos-delay="1000"
               >
-                With a fleet of state-of-the-art vessels, aircraft, and a robust
-                land transport network, we deliver reliability at scale. Our
-                real-time tracking and AI-driven analytics provide unparalleled
-                visibility, empowering businesses to thrive in a dynamic market.
+                {t("common.global_logistics_excellence_details")}
               </p>
               <button
                 className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300"
                 data-aos="zoom-in"
                 data-aos-delay="1100"
               >
-                Explore Our Network
+                {t("common.explore_our_network")}
               </button>
             </div>
           </div>
@@ -362,14 +352,14 @@ const App = () => {
               data-aos="fade-up"
               data-aos-delay="500"
             >
-              SPECIAL HIGHLIGHTS
+              {t("common.special_highlights")}
             </h2>
             <p
               className="text-lg text-blue-200 max-w-3xl mx-auto"
               data-aos="fade-down"
               data-aos-delay="600"
             >
-              Discover Bode Logistics!
+              {t("common.special_highlights_description")}
             </p>
           </div>
           <div
@@ -395,7 +385,7 @@ const App = () => {
                   data-aos="fade-left"
                   data-aos-delay="1100"
                 >
-                  myBODE - Your Digital Freight Platform
+                  {t("common.digital_freight_platform")}
                 </h3>
               </div>
             </div>
@@ -417,7 +407,7 @@ const App = () => {
                   data-aos="fade-right"
                   data-aos-delay="1100"
                 >
-                  BODE Insights
+                  {t("common.bode_insights")}
                 </h3>
               </div>
             </div>
@@ -439,7 +429,7 @@ const App = () => {
                   data-aos="fade-left"
                   data-aos-delay="1100"
                 >
-                  Promoting gender diversity at BODE
+                  {t("common.promoting_gender_diversity")}
                 </h3>
               </div>
             </div>
@@ -461,7 +451,7 @@ const App = () => {
                   data-aos="fade-right"
                   data-aos-delay="1100"
                 >
-                  Case Studies
+                  {t("common.case_studies")}
                 </h3>
               </div>
             </div>
@@ -490,17 +480,14 @@ const App = () => {
               data-aos="fade-up"
               data-aos-delay="500"
             >
-              Innovative Solutions Showcase
+              {t("common.innovative_solutions_showcase")}
             </h2>
             <p
               className="text-lg text-gray-400 max-w-3xl mx-auto"
               data-aos="fade-down"
               data-aos-delay="600"
             >
-              Revolutionize your supply chain with Bode Logistics' pioneering
-              solutions. From sustainable packaging to automated warehousing, we
-              integrate the latest advancements to drive efficiency and reduce
-              costs as of July 21, 2025.
+              {t("common.innovative_solutions_showcase_description")}
             </p>
           </div>
           <div
@@ -518,17 +505,14 @@ const App = () => {
                 data-aos="fade-up"
                 data-aos-delay="900"
               >
-                Our proprietary logistics platform leverages machine learning to
-                optimize routes and predict demand, saving you time and
-                resources. Experience a future-ready logistics partner committed
-                to sustainability and innovation.
+                {t("common.innovative_solutions_showcase_details")}
               </p>
               <button
                 className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300"
                 data-aos="zoom-in"
                 data-aos-delay="1000"
               >
-                Discover Innovations
+                {t("common.discover_innovations")}
               </button>
             </div>
             <img
@@ -635,16 +619,14 @@ const App = () => {
               data-aos="fade-up"
               data-aos-delay="500"
             >
-              Sustainability Commitment
+              {t("common.sustainability_commitment")}
             </h2>
             <p
               className="text-lg text-gray-400 max-w-3xl mx-auto"
               data-aos="fade-down"
               data-aos-delay="600"
             >
-              Bode Logistics is dedicated to a greener future. Our eco-friendly
-              initiatives, including carbon-neutral shipping, reduce your
-              environmental footprint as of July 21, 2025.
+              {t("common.sustainability_commitment_description")}
             </p>
           </div>
           <div
@@ -706,16 +688,14 @@ const App = () => {
               data-aos="fade-up"
               data-aos-delay="500"
             >
-              Exclusive Client Portal Access
+              {t("common.exclusive_client_portal_access")}
             </h2>
             <p
               className="text-lg text-gray-400 max-w-3xl mx-auto"
               data-aos="fade-down"
               data-aos-delay="600"
             >
-              Unlock a world of control with Bode Hub. Manage shipments, access
-              analytics, and connect with our team 24/7 starting today, July 21,
-              2025.
+              {t("common.exclusive_client_portal_access_description")}
             </p>
           </div>
           <div
@@ -772,7 +752,7 @@ const App = () => {
             data-aos="fade-left"
             data-aos-delay="400"
           >
-            BODE LOGISTICS NEWSROOM
+            {t("common.bode_logistics_newsroom")}
           </h2>
           <div
             className="flex flex-col md:flex-row gap-10 items-center mb-16 overflow-hidden"
@@ -997,22 +977,14 @@ const App = () => {
             data-aos="fade-right"
             data-aos-delay="400"
           >
-            JOIN US
+            {t("common.join_us")}
           </h2>
           <p
             className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto"
             data-aos="fade-up"
             data-aos-delay="500"
           >
-            At Bode Logistics, we are not just a leading global supply chain
-            solutions provider; we are a community of innovators, collaborators,
-            and problem-solvers. With a presence in over 170 countries and a
-            workforce of more than 110,000 dedicated employees, we understand
-            that our people are the key to our success. Join us on a journey
-            where you can take bold steps in your career and embrace the
-            opportunities for growth and development that await you. Dare to
-            grow with Bode Logistics and help shape the future of global
-            logistics through imagination, excellence, and commitment.
+            {t("common.join_us_description")}
           </p>
         </div>
       </section>

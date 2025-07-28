@@ -1,9 +1,11 @@
 import Navbar from "../components/navbar.jsx";
 import AboutImg from "../images/aboutimg.jpeg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Footer from "../components/footer.jsx";
 
 const About = () => {
+  const { t } = useTranslation();
   return (
     <div
       className="min-h-screen bg-slate-900 text-white overflow-x-hidden"
