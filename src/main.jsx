@@ -9,6 +9,7 @@ import MouseFollower from "./components/MouseFollower";
 import Navbar from "./components/navbar";
 import Create from "./pages/create";
 import About from "./pages/about";
+import Contact from "./pages/contact.jsx";
 
 import Dashboardlayout from "./layouts/dashboardlayout.jsx";
 import Dashboardhome from "./pages/dashboard/dashboardhome.jsx";
@@ -29,6 +30,7 @@ root.render(
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/create" element={<Create />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
