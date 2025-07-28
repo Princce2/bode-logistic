@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Bodelogo from "../images/Bodelogo.jpg";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Create = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     first_name: "",
     last_name: "",
@@ -23,6 +25,23 @@ const Create = () => {
     setError("");
     setSuccess("");
 
+    // Basic form validation
+    if (!form.first_name || !form.last_name || !form.email || !form.password) {
+      const errorMsg = "Please fill in all required fields";
+      setError(errorMsg);
+      toast.error(errorMsg);
+      setLoading(false);
+      return;
+    }
+
+    if (form.password.length < 6) {
+      const errorMsg = "Password must be at least 6 characters long";
+      setError(errorMsg);
+      toast.error(errorMsg);
+      setLoading(false);
+      return;
+    }
+
     console.log("Form data:", form);
     try {
       const response = await fetch(
@@ -37,18 +56,42 @@ const Create = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Account creation failed. Please check your details.");
+        // Try to get specific error message from API
+        let errorMessage = "Account creation failed. Please check your details.";
+        try {
+          const errorData = await response.json();
+          if (errorData.message) {
+            errorMessage = errorData.message;
+          } else if (errorData.error) {
+            errorMessage = errorData.error;
+          } else if (errorData.details) {
+            errorMessage = errorData.details;
+          }
+        } catch (parseError) {
+          // If we can't parse the error response, use default message
+          if (response.status === 422) {
+            errorMessage = "Invalid input data. Please check your email format and ensure all fields are filled correctly.";
+          } else if (response.status === 409) {
+            errorMessage = "An account with this email already exists.";
+          }
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
       // If the API returns a token after registration
       // localStorage.setItem("token", data.accessToken);
-      setSuccess("Account created successfully! You can now log in.");
+      toast.success("Account created successfully! Redirecting to login...");
       setForm({ first_name: "", last_name: "", email: "", password: "" });
+      
+      // Redirect to login page after 2 seconds
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (error) {
       console.error("Error:", error);
       setError(error.message);
-      // toast.error(`Error: ${error.message}`); // Uncomment if using toast
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
@@ -97,6 +140,7 @@ const Create = () => {
                   onChange={handleChange}
                   placeholder="Enter your first name"
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
                 />
               </div>
 
@@ -111,6 +155,7 @@ const Create = () => {
                   onChange={handleChange}
                   placeholder="Enter your last name"
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
                 />
               </div>
 
@@ -125,6 +170,7 @@ const Create = () => {
                   onChange={handleChange}
                   placeholder="Enter your email"
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
                 />
               </div>
 
@@ -137,8 +183,10 @@ const Create = () => {
                   name="password"
                   value={form.password}
                   onChange={handleChange}
-                  placeholder="Create a password"
+                  placeholder="Create a password (min 6 characters)"
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                  minLength={6}
                 />
               </div>
             </div>

@@ -50,6 +50,27 @@
     "copyright": "© 博德物流 2025",
     "top": "顶部"
   },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "与我们取得联系",
+    "sendMessage": "给我们发送消息",
+    "sendMessageDescription": "在下方填写您的信息，我们将与您联系",
+    "firstName": "名字",
+    "firstNamePlaceholder": "请输入您的名字",
+    "lastName": "姓氏",
+    "lastNamePlaceholder": "请输入您的姓氏",
+    "email": "电子邮件",
+    "emailPlaceholder": "请输入您的电子邮件",
+    "phoneNumber": "电话号码",
+    "phoneNumberPlaceholder": "请输入您的电话号码",
+    "message": "消息",
+    "messagePlaceholder": "请输入您的消息",
+    "sendButton": "发送消息",
+    "getInTouch": "联系我们",
+    "emailLabel": "电子邮件：",
+    "phoneLabel": "电话：",
+    "addressLabel": "地址："
+  },
   "common": {
     "services": "服务",
     "careers": "职业",

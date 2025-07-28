@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Bodelogo from "../images/Bodelogo.jpg";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -38,12 +41,17 @@ const Login = () => {
       const data = await response.json();
       // If the API returns a token after login
       // localStorage.setItem("token", data.accessToken);
-      setSuccess("Login successful!");
+      toast.success("Login successful! Redirecting to dashboard...");
       setForm({ email: "", password: "" });
+      
+      // Redirect to dashboard after 1.5 seconds
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
     } catch (error) {
       console.error("Error:", error);
       setError(error.message);
-      // toast.error(`Error: ${error.message}`); // Uncomment if using toast
+      toast.error(`Error: ${error.message}`);
     } finally {
       setLoading(false);
     }

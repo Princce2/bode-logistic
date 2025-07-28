@@ -48,20 +48,21 @@ const DispatchShipment = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    setTimeout(() => {
-      console.log("Shipment Data:", JSON.stringify(formData, null, 2));
+    // Basic form validation
+    if (!formData.recipient_id || !formData.content) {
+      setError("Please fill in recipient ID and content fields");
       setLoading(false);
-    }, 1500);
-  };
+      return;
+    }
 
-  const fetchdata = async () => {
     try {
       const response = await fetch(
-        "https://electronic-gertrudis-chanel-debb-bad97784.koyeb.app/docs",
+        "https://electronic-gertrudis-chanel-debb-bad97784.koyeb.app/create",
         {
           method: "POST",
           headers: {
@@ -72,20 +73,55 @@ const DispatchShipment = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        // Try to get specific error message from API
+        let errorMessage = "Failed to dispatch shipment. Please try again.";
+        try {
+          const errorData = await response.json();
+          if (errorData.message) {
+            errorMessage = errorData.message;
+          } else if (errorData.error) {
+            errorMessage = errorData.error;
+          } else if (errorData.details) {
+            errorMessage = errorData.details;
+          }
+        } catch (parseError) {
+          if (response.status === 404) {
+            errorMessage = "Dispatch endpoint not found. Please contact support.";
+          } else if (response.status === 422) {
+            errorMessage = "Invalid shipment data. Please check all fields.";
+          } else {
+            errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+          }
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
-      console.log(data);
+      console.log("Shipment dispatched successfully:", data);
+      
+      // Reset form on success
+      setFormData({
+        recipient_id: "",
+        content: "",
+        weight: 0,
+        note: "",
+        delievery_date: "",
+        new_recipient: {
+          full_name: "",
+          address: "",
+          phone_number_1: "",
+          phone_number_2: "",
+        },
+      });
+      
+      alert(`Shipment dispatched successfully! Tracking ID: ${data.tracking_id || data.id || 'Generated'}`);
     } catch (error) {
       console.error("Error dispatching shipment:", error);
-      setError(error || message);
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchdata();
-  }, []);
 
   return (
     <div>
@@ -164,7 +200,7 @@ const DispatchShipment = () => {
               </label>
               <input
                 type="date"
-                name="delivery_date"
+                name="delievery_date"
                 value={formData.delievery_date}
                 onChange={handleChange}
                 className="w-full border rounded-lg px-2 py-1.5 sm:px-3 sm:py-2 text-sm"
@@ -211,6 +247,11 @@ const DispatchShipment = () => {
               </div>
             </div>
 
+            {error && (
+              <div className="text-center mb-4">
+                <p className="text-sm text-red-600 bg-red-50 p-2 rounded">{error}</p>
+              </div>
+            )}
             <div className="text-center sm:text-right pt-2">
               <button
                 type="submit"

@@ -1,68 +1,142 @@
 import Navbar from "../components/navbar";
 import AboutImg from "../images/aboutimg.jpeg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Footer from "../components/footer";
 
 const Contact = () => {
+    const { t } = useTranslation();
+    
     return (
         <div className="min-h-screen bg-slate-900 w-full font-sans">
             <Navbar />
             
-            <div className="relative w-full">
+            {/* Hero Section */}
+            <div className="relative w-full h-[50vh] sm:h-[60vh]">
                 <img
                     src={AboutImg}
                     alt="Contact Us"
-                    className="w-full h-50 object-cover" 
+                    className="w-full h-full object-cover"
                 />
-                <h2 className="text-4xl font-bold text-white mt-6 ml-7">CONTACT US</h2>
-                <Link
-                  to="/"
-                  className="inline-block mt-6 ml-7 text-blue-500 hover:underline text-lg font-medium"
-                >
-                    FILL IN YOUR INFORMATIONS
-                </Link>
-
-                <form className="space-y-10 mt-6 ml-7 ">
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <label className="block text-sm text-white font-semibold mb-2">First Name</label>
-                            <input type="text" placeholder="Enter your first name" className="w-full border-b border-white text-white focus:outline-none focus:border-white py-2" />
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-semibold text-white mb-2">Last Name</label>
-                            <input type="text" placeholder="Enter your last name" className="w-full border-b border-white text-white focus:outline-none focus:border-white py-2" />
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-semibold text-white mb-2">Email</label>
-                            <input type="email" placeholder="Enter your email" className="w-full border-b border-white focus:outline-none text-white focus:border-white py-2" />
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-semibold text-white mb-2">Phone number</label>
-                            <input type="tel" placeholder="Enter your phone number" className="w-full border-b border-white focus:outline-none text-white focus:border-white py-2" />
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-semibold text-white mb-2">Message</label>
-                            <textarea placeholder="Enter your message" rows={2} className="w-full border-b border-white focus:outline-none text-white focus:border-white py-2"></textarea>
-                        </div>
-
-                        <button type="submit" className="flex items-center mt-25 ml-20 bg-white hover:bg-blue-800  w-24 h-10 gap-2 px-5 py-3 text-slate-900 hover:text-white rounded-md font-medium hover:underline transition-all">
-                            Submit 
-                        </button>
+                <div className="absolute inset-0 bg-black/50 flex flex-col justify-center px-4 sm:px-8">
+                    <div className="max-w-7xl mx-auto w-full">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 text-left">
+                            {t("contact.title")}
+                        </h1>
+                        <p className="text-lg sm:text-xl text-gray-200 text-left mb-4">
+                            {t("contact.subtitle")}
+                        </p>
+                        <Link
+                            to="/"
+                            className="inline-block text-blue-500 hover:underline text-base sm:text-lg font-medium"
+                        >
+                            BODE LOGISTICS
+                        </Link>
                     </div>
-                </form>
-
-
-                <div className="mt-12 text-sm ml-7 text-white">
-                    <p className="font-semibold mb-1">EMAIL US</p>
-                    <p className="text-white hover:text-blue-500">bodelogistics@gmail.com</p>
                 </div>
-        </div>
+            </div>
+
+            {/* Contact Form Section */}
+            <div className="bg-slate-900 py-12 px-4 sm:px-8">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-8">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                            {t("contact.sendMessage")}
+                        </h2>
+                        <p className="text-gray-300">
+                            {t("contact.sendMessageDescription")}
+                        </p>
+                    </div>
+
+                    <form className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="block text-sm font-semibold text-white mb-2">
+                                    {t("contact.firstName")}
+                                </label>
+                                <input 
+                                    type="text"
+                                    placeholder={t("contact.firstNamePlaceholder")} 
+                                    className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-semibold text-white mb-2">
+                                    {t("contact.lastName")}
+                                </label>
+                                <input 
+                                    type="text"
+                                    placeholder={t("contact.lastNamePlaceholder")} 
+                                    className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-semibold text-white mb-2">
+                                    {t("contact.email")}
+                                </label>
+                                <input 
+                                    type="email"
+                                    placeholder={t("contact.emailPlaceholder")} 
+                                    className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-semibold text-white mb-2">
+                                    {t("contact.phoneNumber")}
+                                </label>
+                                <input 
+                                    type="tel"
+                                    placeholder={t("contact.phoneNumberPlaceholder")} 
+                                    className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-semibold text-white mb-2">
+                                {t("contact.message")}
+                            </label>
+                            <textarea
+                                placeholder={t("contact.messagePlaceholder")} 
+                                rows={5} 
+                                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                            ></textarea>
+                        </div>
+
+                        <div className="text-center">
+                            <button 
+                                type="submit"
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition duration-300 transform hover:scale-105"
+                            >
+                                {t("contact.sendButton")}
+                            </button>
+                        </div>
+                    </form>
+
+                    {/* Contact Info */}
+                    <div className="mt-12 text-center">
+                        <div className="bg-gray-800 rounded-lg p-6">
+                            <h3 className="text-xl font-bold text-white mb-4">{t("contact.getInTouch")}</h3>
+                            <div className="space-y-2">
+                                <p className="text-gray-300">
+                                    <span className="font-semibold text-white">{t("contact.emailLabel")}</span> bodelogistics@gmail.com
+                                </p>
+                                <p className="text-gray-300">
+                                    <span className="font-semibold text-white">{t("contact.phoneLabel")}</span> +1 (555) 123-4567
+                                </p>
+                                <p className="text-gray-300">
+                                    <span className="font-semibold text-white">{t("contact.addressLabel")}</span> 123 Logistics Ave, Business District
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <Footer />
         </div>
-    )};
+    );};
 
 export default Contact;

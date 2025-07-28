@@ -50,6 +50,27 @@
     "copyright": "© Bode Logistics 2025",
     "top": "OBEN"
   },
+  "contact": {
+    "title": "KONTAKTIEREN SIE UNS",
+    "subtitle": "Nehmen Sie Kontakt mit uns auf",
+    "sendMessage": "Senden Sie uns eine Nachricht",
+    "sendMessageDescription": "Füllen Sie unten Ihre Informationen aus und wir melden uns bei Ihnen",
+    "firstName": "Vorname",
+    "firstNamePlaceholder": "Geben Sie Ihren Vornamen ein",
+    "lastName": "Nachname",
+    "lastNamePlaceholder": "Geben Sie Ihren Nachnamen ein",
+    "email": "E-Mail",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+    "phoneNumber": "Telefonnummer",
+    "phoneNumberPlaceholder": "Geben Sie Ihre Telefonnummer ein",
+    "message": "Nachricht",
+    "messagePlaceholder": "Geben Sie Ihre Nachricht ein",
+    "sendButton": "Nachricht senden",
+    "getInTouch": "Kontakt aufnehmen",
+    "emailLabel": "E-Mail:",
+    "phoneLabel": "Telefon:",
+    "addressLabel": "Adresse:"
+  },
   "common": {
     "services": "Dienstleistungen",
     "careers": "Karriere",

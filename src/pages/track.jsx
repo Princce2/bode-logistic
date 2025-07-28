@@ -8,14 +8,45 @@ import Footer from "../components/footer.jsx";
 
 const Track = () => {
   const [loading, setLoading] = useState(false);
+  const [trackingNumber, setTrackingNumber] = useState("");
+  const [trackingResult, setTrackingResult] = useState(null);
+  const [error, setError] = useState("");
   const { t } = useTranslation();
 
-  const handleTrack = () => {
-    setLoading(true);
+  const handleTrack = async () => {
+    if (!trackingNumber.trim()) {
+      setError("Please enter a tracking number");
+      return;
+    }
 
-    setTimeout(() => {
+    setLoading(true);
+    setError("");
+    setTrackingResult(null);
+
+    try {
+      const response = await fetch(
+        `https://electronic-gertrudis-chanel-debb-bad97784.koyeb.app/track/${trackingNumber}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Tracking number not found. Please check and try again.");
+      }
+
+      const data = await response.json();
+      setTrackingResult(data);
+      console.log("Tracking result:", data);
+    } catch (error) {
+      console.error("Error tracking shipment:", error);
+      setError(error.message);
+    } finally {
       setLoading(false);
-    }, 2000);
+    }
   };
   return (
     <div className="relative min-h-screen bg-gray-100">
@@ -42,8 +73,10 @@ const Track = () => {
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <input
               type="text"
+              value={trackingNumber}
+              onChange={(e) => setTrackingNumber(e.target.value)}
               placeholder={t("track.placeholder")}
-              className="w-full md:flex-1 px-4 py-2 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="w-full md:flex-1 px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-200"
             />
             <button
               onClick={handleTrack}
@@ -62,6 +95,26 @@ const Track = () => {
               )}
             </button>
           </div>
+          
+          {error && (
+            <div className="mt-4 p-3 bg-red-900/20 border border-red-500 rounded-lg">
+              <p className="text-red-400 text-sm">{error}</p>
+            </div>
+          )}
+          
+          {trackingResult && (
+            <div className="mt-6 p-4 bg-green-900/20 border border-green-500 rounded-lg">
+              <h3 className="text-green-400 font-semibold mb-2">Tracking Result:</h3>
+              <div className="text-white text-sm space-y-1">
+                <p><span className="font-medium">Status:</span> {trackingResult.status || 'In Transit'}</p>
+                <p><span className="font-medium">Location:</span> {trackingResult.location || 'Processing Center'}</p>
+                <p><span className="font-medium">Last Update:</span> {trackingResult.lastUpdate || new Date().toLocaleDateString()}</p>
+                {trackingResult.estimatedDelivery && (
+                  <p><span className="font-medium">Estimated Delivery:</span> {trackingResult.estimatedDelivery}</p>
+                )}
+              </div>
+            </div>
+          )}
         </div>
         </div>
       </div>

@@ -296,19 +296,19 @@ const App = () => {
             </p>
           </div>
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 overflow-hidden"
             data-aos="zoom-in"
             data-aos-delay="700"
           >
             <img
               src={DigitalFreight}
               alt="Global Logistics Network"
-              className="rounded-xl shadow-lg object-cover h-64 md:h-full"
+              className="w-full rounded-xl shadow-lg object-cover h-64 md:h-full"
               data-aos="fade-right"
               data-aos-delay="800"
             />
             <div
-              className="flex flex-col justify-center"
+              className="flex flex-col justify-center mt-4 md:mt-0"
               data-aos="fade-left"
               data-aos-delay="900"
             >
@@ -491,12 +491,12 @@ const App = () => {
             </p>
           </div>
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 overflow-hidden"
             data-aos="zoom-in"
             data-aos-delay="700"
           >
             <div
-              className="flex flex-col justify-center"
+              className="flex flex-col justify-center order-2 md:order-1 mt-4 md:mt-0"
               data-aos="fade-right"
               data-aos-delay="800"
             >
@@ -518,7 +518,7 @@ const App = () => {
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
               alt="Innovative Logistics Technology"
-              className="rounded-xl shadow-lg object-cover h-64 md:h-full"
+              className="w-full rounded-xl shadow-lg object-cover h-64 md:h-full order-1 md:order-2"
               data-aos="fade-left"
               data-aos-delay="1100"
             />
@@ -561,19 +561,19 @@ const App = () => {
             </p>
           </div>
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 overflow-hidden"
             data-aos="zoom-in"
             data-aos-delay="700"
           >
             <img
               src="https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=800&q=80"
               alt="Market Analysis Dashboard"
-              className="rounded-xl shadow-lg object-cover h-64 md:h-full"
+              className="w-full rounded-xl shadow-lg object-cover h-64 md:h-full"
               data-aos="fade-right"
               data-aos-delay="800"
             />
             <div
-              className="flex flex-col justify-center"
+              className="flex flex-col justify-center mt-4 md:mt-0"
               data-aos="fade-left"
               data-aos-delay="900"
             >
@@ -630,19 +630,19 @@ const App = () => {
             </p>
           </div>
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 overflow-hidden"
             data-aos="zoom-in"
             data-aos-delay="700"
           >
             <img
               src={Gender}
               alt="Sustainable Logistics Practices"
-              className="rounded-xl shadow-lg object-cover h-64 md:h-full"
+              className="w-full rounded-xl shadow-lg object-cover h-64 md:h-full"
               data-aos="fade-right"
               data-aos-delay="800"
             />
             <div
-              className="flex flex-col justify-center"
+              className="flex flex-col justify-center mt-4 md:mt-0"
               data-aos="fade-left"
               data-aos-delay="900"
             >
@@ -699,19 +699,19 @@ const App = () => {
             </p>
           </div>
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 overflow-hidden"
             data-aos="zoom-in"
             data-aos-delay="700"
           >
             <img
               src={Studies}
               alt="Client Portal Interface"
-              className="rounded-xl shadow-lg object-cover h-64 md:h-full"
+              className="w-full rounded-xl shadow-lg object-cover h-64 md:h-full"
               data-aos="fade-right"
               data-aos-delay="800"
             />
             <div
-              className="flex flex-col justify-center"
+              className="flex flex-col justify-center mt-4 md:mt-0"
               data-aos="fade-left"
               data-aos-delay="900"
             >

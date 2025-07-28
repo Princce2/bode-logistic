@@ -71,6 +71,27 @@
     "moveForwardTogether": "Let's Move Forward Together",
     "moveForwardDescription": "At Bode Logistics, we believe logistics is more than just moving goods — it's about connecting people, markets, and possibilities. Join us on the journey."
   },
+  "contact": {
+    "title": "CONTACT US",
+    "subtitle": "Get in touch with us",
+    "sendMessage": "Send us a Message",
+    "sendMessageDescription": "Fill in your information below and we'll get back to you",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "phoneNumber": "Phone Number",
+    "phoneNumberPlaceholder": "Enter your phone number",
+    "message": "Message",
+    "messagePlaceholder": "Enter your message",
+    "sendButton": "Send Message",
+    "getInTouch": "Get in Touch",
+    "emailLabel": "Email:",
+    "phoneLabel": "Phone:",
+    "addressLabel": "Address:"
+  },
   "footer": {
     "findJob": "Find a job",
     "findJobDescription": "At Bode Logistics, we offer diverse job opportunities that match your skills and aspirations. Join a team that values your talents and supports your journey toward success!",

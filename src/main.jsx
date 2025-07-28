@@ -14,8 +14,11 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Track from "./pages/track.jsx";
 import Dispatch from "./pages/dispatch.jsx"
+import Contact from "./pages/contact.jsx"
 
 const AOSApp = () => {
   useEffect(() => {
@@ -45,7 +48,20 @@ const AOSApp = () => {
           <Route path="/about" element={<About />} />
           <Route path="/track" element={<Track />} />
           <Route path="/dispatch" element={<Dispatch />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </BrowserRouter>
     </I18nextProvider>
   );
