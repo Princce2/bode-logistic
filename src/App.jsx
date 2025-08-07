@@ -711,7 +711,7 @@ const App = () => {
               data-aos-delay="800"
             />
             <div
-              className="flex flex-col justify-center mt-4 md:mt-0"
+              className="flex flex-col justify-center mt-4 md:mt-0 text-center"
               data-aos="fade-left"
               data-aos-delay="900"
             >
@@ -724,13 +724,14 @@ const App = () => {
                 and direct support. Elevate your logistics experience with a
                 personalized, all-in-one platform.
               </p>
-              <button
-                className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300"
+              <Link
+                to="/login"
+                className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300 inline-block"
                 data-aos="zoom-in"
                 data-aos-delay="1100"
               >
                 Access Bode Hub
-              </button>
+              </Link>
             </div>
           </div>
         </div>

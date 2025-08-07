@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import SignInDropdown from "./SignInDropdown";
+import CreateAccountDropdown from "./CreateAccountDropdown";
 import "../i18n";
 
 const Navbar = () => {
@@ -52,9 +54,6 @@ const Navbar = () => {
             <Link to="/contact" className="text-sm font-medium hover:text-blue-400 transition">
               {t("navbar.contact")}
             </Link>
-            <Link to="/dispatch" className="text-sm font-medium hover:text-blue-400 transition">
-              {t("navbar.dispatch")}
-            </Link>
             <Link to="/login" className="flex items-center space-x-1 hover:text-blue-400 transition">
               <CgProfile className="text-lg" />
               <span className="text-sm font-medium">{t("navbar.bodeHub")}</span>
@@ -76,16 +75,10 @@ const Navbar = () => {
                 >
                   {t("navbar.signIn")}
                 </button>
-                {showSignIn && (
-                  <div className="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-lg p-4 z-50">
-                    <h3 className="text-base font-semibold text-gray-800 mb-3">{t("navbar.signIn")}</h3>
-                    <form className="space-y-3">
-                      <input type="email" placeholder="Email" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                      <input type="password" placeholder="Password" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                      <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm font-medium transition">{t("navbar.signIn")}</button>
-                    </form>
-                  </div>
-                )}
+                <SignInDropdown 
+                  isOpen={showSignIn} 
+                  onClose={() => setShowSignIn(false)} 
+                />
               </div>
               <div className="relative">
                 <button 
@@ -94,17 +87,10 @@ const Navbar = () => {
                 >
                   {t("navbar.createAccount")}
                 </button>
-                {showCreateAccount && (
-                  <div className="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-lg p-4 z-50">
-                    <h3 className="text-base font-semibold text-gray-800 mb-3">{t("navbar.createAccount")}</h3>
-                    <form className="space-y-3">
-                      <input type="text" placeholder="Full Name" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
-                      <input type="email" placeholder="Email" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
-                      <input type="password" placeholder="Password" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
-                      <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg text-sm font-medium transition">{t("navbar.createAccount")}</button>
-                    </form>
-                  </div>
-                )}
+                <CreateAccountDropdown 
+                  isOpen={showCreateAccount} 
+                  onClose={() => setShowCreateAccount(false)} 
+                />
               </div>
             </div>
 
@@ -139,9 +125,6 @@ const Navbar = () => {
               <Link to="/contact" className="block text-sm font-medium hover:text-blue-400 transition py-2">
                 {t("navbar.contact")}
               </Link>
-              <Link to="/dispatch" className="block text-sm font-medium hover:text-blue-400 transition py-2">
-                {t("navbar.dispatch")}
-              </Link>
               <Link to="/login" className="flex items-center space-x-2 hover:text-blue-400 transition py-2">
                 <CgProfile className="text-lg" />
                 <span className="text-sm font-medium">{t("navbar.bodeHub")}</span>
@@ -170,23 +153,18 @@ const Navbar = () => {
               {/* Mobile Forms */}
               {showSignIn && (
                 <div className="bg-white rounded-lg p-4 mt-3">
-                  <h3 className="text-base font-semibold text-gray-800 mb-3">{t("navbar.signIn")}</h3>
-                  <form className="space-y-3">
-                    <input type="email" placeholder="Email" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <input type="password" placeholder="Password" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm font-medium transition">{t("navbar.signIn")}</button>
-                  </form>
+                  <SignInDropdown 
+                    isOpen={true} 
+                    onClose={() => setShowSignIn(false)} 
+                  />
                 </div>
               )}
               {showCreateAccount && (
                 <div className="bg-white rounded-lg p-4 mt-3">
-                  <h3 className="text-base font-semibold text-gray-800 mb-3">{t("navbar.createAccount")}</h3>
-                  <form className="space-y-3">
-                    <input type="text" placeholder="Full Name" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
-                    <input type="email" placeholder="Email" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
-                    <input type="password" placeholder="Password" className="w-full px-3 py-2 border rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
-                    <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg text-sm font-medium transition">{t("navbar.createAccount")}</button>
-                  </form>
+                  <CreateAccountDropdown 
+                    isOpen={true} 
+                    onClose={() => setShowCreateAccount(false)} 
+                  />
                 </div>
               )}
             </div>

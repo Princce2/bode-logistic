@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const DashboardHome = () => {
   return (
@@ -12,25 +13,15 @@ const DashboardHome = () => {
           features all in one place.
         </p>
       </header>
-      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <section className="bg-[#1F2937] rounded-xl shadow-lg p-8 flex flex-col justify-center items-center">
           <h2 className="text-2xl font-bold mb-4">Track Shipments</h2>
           <p className="text-gray-400 mb-6 text-center">
             Monitor the status and location of your shipments in real time.
           </p>
-          <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300">
+          <Link to="/track" className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300 inline-block text-center">
             Go to Tracking
-          </button>
-        </section>
-        <section className="bg-[#1F2937] rounded-xl shadow-lg p-8 flex flex-col justify-center items-center">
-          <h2 className="text-2xl font-bold mb-4">Analytics & Reports</h2>
-          <p className="text-gray-400 mb-6 text-center">
-            View performance metrics, shipment history, and download detailed
-            reports.
-          </p>
-          <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300">
-            View Analytics
-          </button>
+          </Link>
         </section>
         <section className="bg-[#1F2937] rounded-xl shadow-lg p-8 flex flex-col justify-center items-center">
           <h2 className="text-2xl font-bold mb-4">Client Support</h2>
@@ -38,9 +29,9 @@ const DashboardHome = () => {
             Access 24/7 support and connect with our logistics experts for
             assistance.
           </p>
-          <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300">
+          <Link to="/contact" className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300 inline-block text-center">
             Contact Support
-          </button>
+          </Link>
         </section>
       </main>
     </div>

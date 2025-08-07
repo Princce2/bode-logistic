@@ -10,6 +10,8 @@ import Create from "./pages/create";
 import About from "./pages/about";
 import Dashboardlayout from "./layouts/dashboardlayout.jsx";
 import Dashboardhome from "./pages/dashboard/dashboardhome.jsx";
+import DashboardDispatch from "./pages/dashboard/dispatch.jsx";
+import DashboardAnalytics from "./pages/dashboard/analytics.jsx";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 import AOS from "aos";
@@ -40,6 +42,8 @@ const AOSApp = () => {
         <Routes>
           <Route path="/dashboard" element={<Dashboardlayout />}>
             <Route index element={<Dashboardhome />} />
+            <Route path="dispatch" element={<DashboardDispatch />} />
+            <Route path="analytics" element={<DashboardAnalytics />} />
           </Route>
           <Route path="/" element={<App />} />
           <Route path="/login" element={<Login />} />

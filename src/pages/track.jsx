@@ -23,9 +23,11 @@ const Track = () => {
     setError("");
     setTrackingResult(null);
 
+    console.log("🔍 Tracking shipment:", trackingNumber);
+
     try {
       const response = await fetch(
-        `https://electronic-gertrudis-chanel-debb-bad97784.koyeb.app/track/${trackingNumber}`,
+        `https://electronic-gertrudis-chanel-debb-bad97784.koyeb.app/dispatches/${trackingNumber}`,
         {
           method: "GET",
           headers: {
@@ -34,15 +36,27 @@ const Track = () => {
         }
       );
 
+      const responseText = await response.text();
+      console.log("📥 Raw tracking response:", responseText);
+      console.log("📊 Tracking response status:", response.status);
+
       if (!response.ok) {
-        throw new Error("Tracking number not found. Please check and try again.");
+        let errorMessage = "Tracking number not found. Please check and try again.";
+        try {
+          const errorData = JSON.parse(responseText);
+          console.log("❌ Tracking error data:", errorData);
+          errorMessage = errorData.detail || errorData.message || errorMessage;
+        } catch {
+          errorMessage = responseText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
-      const data = await response.json();
+      const data = JSON.parse(responseText);
+      console.log("✅ Tracking result:", data);
       setTrackingResult(data);
-      console.log("Tracking result:", data);
     } catch (error) {
-      console.error("Error tracking shipment:", error);
+      console.error("❌ Error tracking shipment:", error);
       setError(error.message);
     } finally {
       setLoading(false);
@@ -106,12 +120,14 @@ const Track = () => {
             <div className="mt-6 p-4 bg-green-900/20 border border-green-500 rounded-lg">
               <h3 className="text-green-400 font-semibold mb-2">Tracking Result:</h3>
               <div className="text-white text-sm space-y-1">
-                <p><span className="font-medium">Status:</span> {trackingResult.status || 'In Transit'}</p>
-                <p><span className="font-medium">Location:</span> {trackingResult.location || 'Processing Center'}</p>
-                <p><span className="font-medium">Last Update:</span> {trackingResult.lastUpdate || new Date().toLocaleDateString()}</p>
-                {trackingResult.estimatedDelivery && (
-                  <p><span className="font-medium">Estimated Delivery:</span> {trackingResult.estimatedDelivery}</p>
-                )}
+                <p><span className="font-medium">Code:</span> {trackingResult.code || 'N/A'}</p>
+                <p><span className="font-medium">Content:</span> {trackingResult.content || 'N/A'}</p>
+                <p><span className="font-medium">Status:</span> {trackingResult.status || 'N/A'}</p>
+                <p><span className="font-medium">Weight:</span> {trackingResult.weight ? `${trackingResult.weight}kg` : 'N/A'}</p>
+                <p><span className="font-medium">Note:</span> {trackingResult.note || 'N/A'}</p>
+                <p><span className="font-medium">Delivery Date:</span> {trackingResult.delievery_date || trackingResult.delivery_date || 'N/A'}</p>
+                <p><span className="font-medium">Created:</span> {trackingResult.created_at ? new Date(trackingResult.created_at).toLocaleDateString() : 'N/A'}</p>
+                <p><span className="font-medium">Updated:</span> {trackingResult.updated_at ? new Date(trackingResult.updated_at).toLocaleDateString() : 'N/A'}</p>
               </div>
             </div>
           )}

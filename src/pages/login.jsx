@@ -23,7 +23,15 @@ const Login = () => {
     setError("");
     setSuccess("");
     
-    console.log("Form data:", form);
+    // Validate form data
+    if (!form.email || !form.password) {
+      setError("Email and password are required.");
+      setLoading(false);
+      return;
+    }
+    
+    console.log("🚀 Sending login data:", form);
+    
     try {
       const response = await fetch(
         "https://electronic-gertrudis-chanel-debb-bad97784.koyeb.app/auth/login",
@@ -35,12 +43,28 @@ const Login = () => {
           body: JSON.stringify(form),
         }
       );
+      
+      const responseText = await response.text();
+      console.log("📥 Raw response:", responseText);
+      console.log("📊 Response status:", response.status);
+      
       if (!response.ok) {
-        throw new Error("Login failed. Please check your credentials.");
+        let errorMessage = "Login failed. Please check your credentials.";
+        try {
+          const errorData = JSON.parse(responseText);
+          console.log("❌ Error data:", errorData);
+          errorMessage = errorData.detail || errorData.message || errorMessage;
+        } catch {
+          errorMessage = responseText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
-      const data = await response.json();
-      // If the API returns a token after login
-      // localStorage.setItem("token", data.accessToken);
+      
+      const data = JSON.parse(responseText);
+      console.log("✅ Login successful:", data);
+      
+      // Store the access token in localStorage
+      localStorage.setItem("token", data.access_token);
       toast.success("Login successful! Redirecting to dashboard...");
       setForm({ email: "", password: "" });
       
@@ -49,7 +73,7 @@ const Login = () => {
         navigate("/dashboard");
       }, 1500);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("❌ Login error:", error);
       setError(error.message);
       toast.error(`Error: ${error.message}`);
     } finally {
@@ -97,6 +121,7 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
             <div className="space-y-2 flex flex-col">
