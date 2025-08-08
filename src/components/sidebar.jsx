@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiHome, FiSend, FiBarChart, FiArrowLeft } from "react-icons/fi";
+import { FiHome, FiSend, FiBarChart, FiArrowLeft, FiUser } from "react-icons/fi";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -60,6 +60,19 @@ const Sidebar = () => {
         >
           <FiBarChart className="text-xl" />
           Analytics
+        </Link>
+        
+        <Link
+          to="/dashboard/users"
+          className={`flex items-center gap-3 text-lg font-medium transition px-4 py-3 rounded-lg
+            ${
+              location.pathname === "/dashboard/users"
+                ? "bg-blue-600/70 text-white shadow-md"
+                : "hover:bg-blue-500/10 hover:text-blue-300"
+            }`}
+        >
+          <FiUser className="text-xl" />
+          User Profile
         </Link>
       </nav>
     </div>
