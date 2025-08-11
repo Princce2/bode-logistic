@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const TrackCatch = () => {
+  const { t } = useTranslation();
   const [id, setId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -38,7 +40,7 @@ const TrackCatch = () => {
           type="id"
           value={id}
           onChange={(e) => setId(e.target.value)}
-          placeholder="Enter Tracking ID"
+          placeholder={t("track.placeholder")}
           className="flex-1 px-4 py-3 rounded-xl border border-gray-700 bg-[#111827] text-white placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
@@ -46,7 +48,7 @@ const TrackCatch = () => {
           className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300"
           disabled={loading}
         >
-          {loading ? "Tracking..." : "Track"}
+          {loading ? t("track.tracking") : t("track.button")}
         </button>
       </div>
       {error && (
@@ -57,7 +59,7 @@ const TrackCatch = () => {
       {result && (
         <div className="mt-8 bg-[#1F2937] border border-blue-800/20 p-6 rounded-2xl max-w-xl mx-auto text-left shadow-md">
           <h4 className="text-lg font-semibold mb-2 text-white">
-            Tracking Details
+            {t("track.trackingDetails")}
           </h4>
           <pre className="text-gray-300 text-sm whitespace-pre-wrap">
             {JSON.stringify(result, null, 2)}

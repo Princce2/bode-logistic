@@ -105,7 +105,7 @@ const App = () => {
                   data-aos-delay={isActive ? "600" : "500"}
                 >
                   <div
-                    className="text-center"
+                    className="text-center pr-16 sm:pr-0"
                     data-aos="fade-right"
                     data-aos-delay={isActive ? "700" : "600"}
                   >
@@ -147,20 +147,21 @@ const App = () => {
                       </>
                     )}
                   </div>
+                  {isActive && (
+                    <button
+                      onClick={nextSlide}
+                      className="absolute right-2 sm:right-8 top-1/2 transform -translate-y-1/2 text-white text-xl sm:text-3xl z-[9999] bg-blue-600 hover:bg-blue-700 p-2 sm:p-4 rounded-full transition-all duration-300 shadow-2xl"
+                    >
+                      <FaChevronRight />
+                    </button>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
 
-        <button
-          onClick={nextSlide}
-          className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white text-2xl z-10 bg-white/20 hover:bg-white/40 p-3 rounded-full"
-          data-aos="fade-left"
-          data-aos-delay="1100"
-        >
-          <FaChevronRight />
-        </button>
+
       </div>
 
       {/* Tab Section - Responsive Standalone */}
@@ -186,7 +187,7 @@ const App = () => {
             >
               {/* Tabs */}
               <div
-                className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 overflow-hidden"
+                className="flex flex-row justify-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 px-2"
                 data-aos="fade-up"
                 data-aos-delay="600"
               >
@@ -194,7 +195,7 @@ const App = () => {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base font-semibold rounded-full capitalize transition-all duration-300 ${
+                    className={`flex-1 max-w-[150px] px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base font-semibold rounded-full capitalize transition-all duration-300 ${
                       activeTab === tab
                         ? "bg-blue-600 text-white shadow-lg"
                         : "text-blue-400 bg-[#1F2937] hover:bg-[#374151] border border-blue-800/20"

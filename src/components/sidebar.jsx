@@ -1,8 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiHome, FiSend, FiBarChart, FiArrowLeft, FiUser } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
+  const { t } = useTranslation();
   const location = useLocation();
 
   return (
@@ -21,7 +23,7 @@ const Sidebar = () => {
           className="flex items-center gap-3 text-lg font-medium transition px-4 py-3 rounded-lg hover:bg-blue-500/10 hover:text-blue-300"
         >
           <FiArrowLeft className="text-xl" />
-          Back to Home
+          {t("sidebar.backToHome")}
         </Link>
         <Link
           to="/dashboard"
@@ -33,7 +35,7 @@ const Sidebar = () => {
             }`}
         >
           <FiHome className="text-xl" />
-          Dashboard
+          {t("sidebar.dashboard")}
         </Link>
         
         <Link
@@ -46,7 +48,7 @@ const Sidebar = () => {
             }`}
         >
           <FiSend className="text-xl" />
-          Dispatch
+          {t("sidebar.dispatch")}
         </Link>
         
         <Link
@@ -59,7 +61,7 @@ const Sidebar = () => {
             }`}
         >
           <FiBarChart className="text-xl" />
-          Analytics
+          {t("sidebar.analytics")}
         </Link>
         
         <Link
@@ -72,7 +74,7 @@ const Sidebar = () => {
             }`}
         >
           <FiUser className="text-xl" />
-          User Profile
+          {t("sidebar.userProfile")}
         </Link>
       </nav>
     </div>

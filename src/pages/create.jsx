@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Bodelogo from "../images/Bodelogo.jpg";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Create = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     first_name: "",
@@ -125,20 +127,20 @@ const Create = () => {
         {/* Form Side */}
         <div className="w-full md:w-1/2 h-full bg-white/10 backdrop-blur-md p-6 md:p-8 flex flex-col justify-center rounded-none md:rounded-r-xl shadow-2xl border-t md:border md:border-blue-300/20 min-h-[600px]">
           <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-6 animate-pulse text-center md:text-left">
-            CREATE AN ACCOUNT
+            {t("create.title")}
           </h1>
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <div className="space-y-2 flex flex-col ">
                 <label className="text-sm font-medium text-gray-300">
-                  FIRST NAME
+                  {t("create.firstName")}
                 </label>
                 <input
                   type="text"
                   name="first_name"
                   value={form.first_name}
                   onChange={handleChange}
-                  placeholder="Enter your first name"
+                  placeholder={t("create.firstNamePlaceholder")}
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
@@ -146,14 +148,14 @@ const Create = () => {
 
               <div className="space-y-2 flex flex-col ">
                 <label className="text-sm font-medium text-gray-300">
-                  LAST NAME
+                  {t("create.lastName")}
                 </label>
                 <input
                   type="text"
                   name="last_name"
                   value={form.last_name}
                   onChange={handleChange}
-                  placeholder="Enter your last name"
+                  placeholder={t("create.lastNamePlaceholder")}
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
@@ -161,14 +163,14 @@ const Create = () => {
 
               <div className="space-y-2 flex flex-col ">
                 <label className="text-sm font-medium text-gray-300">
-                  EMAIL
+                  {t("create.email")}
                 </label>
                 <input
                   type="email"
                   name="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="Enter your email"
+                  placeholder={t("create.emailPlaceholder")}
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
@@ -176,14 +178,14 @@ const Create = () => {
 
               <div className="space-y-2 flex flex-col ">
                 <label className="text-sm font-medium text-gray-300">
-                  PASSWORD
+                  {t("create.password")}
                 </label>
                 <input
                   type="password"
                   name="password"
                   value={form.password}
                   onChange={handleChange}
-                  placeholder="Create a password (min 6 characters)"
+                  placeholder={t("create.passwordPlaceholder")}
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                   minLength={6}
@@ -196,7 +198,7 @@ const Create = () => {
               className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition duration-200"
               disabled={loading}
             >
-              {loading ? "Creating Account..." : "Create Account"}
+              {loading ? t("create.creating") : t("create.createButton")}
             </button>
             {error && (
               <div className="text-center pt-2">
@@ -210,12 +212,12 @@ const Create = () => {
             )}
             <div className="text-center pt-4">
               <p className="text-sm text-gray-300">
-                Already have an account?{" "}
+                {t("create.alreadyHaveAccount")}{" "}
                 <Link
                   to="/login"
                   className="text-blue-400 hover:text-blue-300 underline transition"
                 >
-                  Login
+                  {t("create.loginLink")}
                 </Link>
               </p>
             </div>

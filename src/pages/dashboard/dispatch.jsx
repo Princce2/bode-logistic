@@ -138,7 +138,7 @@ const DashboardDispatch = () => {
           {t("dispatch.title")}
         </h1>
         <p className="text-lg text-gray-300">
-          Create and dispatch new shipments from your dashboard
+          {t("dispatch.description")}
         </p>
       </header>
 
@@ -264,7 +264,7 @@ const DashboardDispatch = () => {
                 className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white rounded-lg font-semibold transition duration-300 flex items-center gap-2"
               >
                 {loading && <FaSpinner className="animate-spin" />}
-                {loading ? "Dispatching..." : "Dispatch Shipment"}
+                {loading ? t("dispatch.dispatching") : t("dispatch.dispatchButton")}
               </button>
             </div>
           </form>

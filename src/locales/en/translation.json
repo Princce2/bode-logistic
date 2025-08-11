@@ -29,7 +29,71 @@
     "phoneNumber1": "Phone Number 1",
     "phoneNumber2": "Phone Number 2",
     "dispatchButton": "Dispatch Shipment",
-    "dispatching": "Dispatching..."
+    "dispatching": "Dispatching...",
+    "description": "Create and dispatch new shipments from your dashboard"
+  },
+  "create": {
+    "title": "CREATE AN ACCOUNT",
+    "firstName": "FIRST NAME",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastName": "LAST NAME",
+    "lastNamePlaceholder": "Enter your last name",
+    "email": "EMAIL",
+    "emailPlaceholder": "Enter your email",
+    "password": "PASSWORD",
+    "passwordPlaceholder": "Create a password (min 6 characters)",
+    "createButton": "Create Account",
+    "creating": "Creating Account...",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginLink": "Login"
+  },
+  "login": {
+    "title": "ENTER THE BODE REALM",
+    "emailLabel": "EMAIL OR USERNAME",
+    "emailPlaceholder": "Enter your email",
+    "passwordLabel": "PASSWORD",
+    "passwordPlaceholder": "Enter your password",
+    "rememberMe": "Remember Me",
+    "forgotPassword": "Forgot Password?",
+    "loginButton": "Login",
+    "loggingIn": "Logging in..."
+  },
+  "dashboard": {
+    "welcome": "Welcome to Bode Logistics Dashboard",
+    "description": "Manage your shipments, view analytics, and access exclusive client features all in one place.",
+    "trackShipments": "Track Shipments",
+    "trackDescription": "Monitor the status and location of your shipments in real time.",
+    "goToTracking": "Go to Tracking",
+    "userProfile": "User Profile",
+    "profileDescription": "View your account information and manage your profile settings.",
+    "viewProfile": "View Profile",
+    "clientSupport": "Client Support",
+    "supportDescription": "Access 24/7 support and connect with our logistics experts for assistance.",
+    "contactSupport": "Contact Support"
+  },
+  "analytics": {
+    "title": "Analytics & Reports",
+    "description": "View performance metrics, shipment history, and detailed reports",
+    "totalShipments": "Total Shipments",
+    "delivered": "Delivered",
+    "inTransit": "In Transit",
+    "successRate": "Success Rate",
+    "recentShipments": "Recent Shipments",
+    "electronics": "Electronics",
+    "documents": "Documents",
+    "clothing": "Clothing",
+    "processing": "Processing",
+    "monthlyPerformance": "Monthly Performance",
+    "january": "January",
+    "february": "February",
+    "march": "March"
+  },
+  "sidebar": {
+    "backToHome": "Back to Home",
+    "dashboard": "Dashboard",
+    "dispatch": "Dispatch",
+    "analytics": "Analytics",
+    "userProfile": "User Profile"
   },
   "about": {
     "title": "ABOUT BODE LOGISTICS",

@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bodelogo from "../images/Bodelogo.jpg";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
@@ -107,33 +109,33 @@ const Login = () => {
         {/* Form Side */}
         <div className="w-full md:w-1/2 h-full bg-white/10 backdrop-blur-md px-6 sm:px-8 md:px-10 py-8 flex flex-col justify-center rounded-none md:rounded-r-xl shadow-2xl border-t md:border md:border-blue-300/20">
           <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-10 md:mb-12 animate-pulse text-center md:text-left">
-            ENTER THE BODE REALM
+            {t("login.title")}
           </h1>
           <form className="space-y-8 md:space-y-9" onSubmit={handleSubmit}>
             <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-300">
-                EMAIL OR USERNAME
+                {t("login.emailLabel")}
               </label>
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="Enter your email"
+                placeholder={t("login.emailPlaceholder")}
                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
             <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-300">
-                PASSWORD
+                {t("login.passwordLabel")}
               </label>
               <input
                 type="password"
                 name="password"
                 value={form.password}
                 onChange={handleChange}
-                placeholder="Enter your password"
+                placeholder={t("login.passwordPlaceholder")}
                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -143,13 +145,13 @@ const Login = () => {
                   type="checkbox"
                   className="h-4 w-4 text-blue-500 border-gray-600 rounded"
                 />
-                <label className="text-sm text-gray-300">Remember Me</label>
+                <label className="text-sm text-gray-300">{t("login.rememberMe")}</label>
               </div>
               <a
                 href="#"
                 className="text-sm text-blue-400 hover:text-blue-300 transition"
               >
-                Forgot Password?
+                {t("login.forgotPassword")}
               </a>
             </div>
             <button
@@ -157,7 +159,7 @@ const Login = () => {
               className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition duration-200"
               disabled={loading}
             >
-              {loading ? "Logging in..." : "Login"}
+              {loading ? t("login.loggingIn") : t("login.loginButton")}
             </button>
             {error && (
               <div className="text-center pt-2">

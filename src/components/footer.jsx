@@ -83,17 +83,18 @@ const Footer = () => {
           {t("footer.accessibility")}
         </a>
       </div>
-      <div className="text-center text-gray-500 text-xs mt-6">
+      <div className="text-center text-gray-500 text-xs mt-6 mb-4">
         {t("footer.copyright")}
       </div>
-    </div>
-    <div className="relative w-full">
-      <button
-        className="absolute bottom-6 right-6 bg-red-600 text-white px-4 py-2 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-red-700 transition"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        {t("footer.top")}
-      </button>
+      
+      <div className="flex justify-center md:justify-end mt-4">
+        <button
+          className="bg-red-600 text-white px-4 py-2 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-red-700 transition"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          {t("footer.top")}
+        </button>
+      </div>
     </div>
   </footer>
   );

@@ -3,6 +3,7 @@ import AboutImg from "../images/aboutimg.jpeg";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Footer from "../components/footer.jsx";
+import "../i18n";
 
 const About = () => {
   const { t } = useTranslation();
@@ -35,14 +36,14 @@ const About = () => {
             data-aos="fade-right"
             data-aos-delay="600"
           >
-            ABOUT BODE LOGISTICS
+            {t("about.title")}
           </h1>
           <p
             className="text-lg sm:text-xl font-semibold text-gray-300 mt-2 text-left"
             data-aos="fade-left"
             data-aos-delay="700"
           >
-            Bode Logistics is a world reference in third-party logistics
+            {t("about.subtitle")}
           </p>
           <Link
             to="/"
@@ -70,7 +71,7 @@ const About = () => {
             data-aos="fade-up"
             data-aos-delay="1100"
           >
-            About Bode Logistics
+            {t("about.pageTitle")}
           </h1>
 
           <section
@@ -83,19 +84,14 @@ const About = () => {
               data-aos="fade-right"
               data-aos-delay="1300"
             >
-              Who We Are
+              {t("about.whoWeAre")}
             </h2>
             <p
               className="text-base sm:text-lg text-gray-400"
               data-aos="fade-left"
               data-aos-delay="1400"
             >
-              Bode Logistics is a trusted logistics and supply chain solutions
-              provider committed to delivering reliable, efficient, and
-              innovative services to businesses across the globe. From freight
-              forwarding and warehousing to last-mile delivery, we streamline
-              the movement of goods with precision and care as of 10:52 PM WAT,
-              July 23, 2025.
+              {t("about.whoWeAreDescription")}
             </p>
           </section>
 
@@ -110,15 +106,14 @@ const About = () => {
                 data-aos="fade-right"
                 data-aos-delay="1700"
               >
-                Our Mission
+                {t("about.ourMission")}
               </h2>
               <p
                 className="text-base sm:text-lg text-gray-400"
                 data-aos="fade-left"
                 data-aos-delay="1800"
               >
-                To simplify global logistics by offering fast, transparent, and
-                customer-centric solutions that help businesses grow and thrive.
+                {t("about.ourMissionDescription")}
               </p>
             </div>
             <div data-aos="fade-left" data-aos-delay="1600">
@@ -127,15 +122,14 @@ const About = () => {
                 data-aos="fade-right"
                 data-aos-delay="1700"
               >
-                Our Vision
+                {t("about.ourVision")}
               </h2>
               <p
                 className="text-base sm:text-lg text-gray-400"
                 data-aos="fade-left"
                 data-aos-delay="1800"
               >
-                To become a leading logistics partner known for excellence,
-                integrity, and technological innovation.
+                {t("about.ourVisionDescription")}
               </p>
             </div>
           </section>
@@ -150,7 +144,7 @@ const About = () => {
               data-aos="fade-right"
               data-aos-delay="2000"
             >
-              What We Do
+              {t("about.whatWeDo")}
             </h2>
             <ul
               className="list-disc list-inside text-gray-400 space-y-2 text-base sm:text-lg overflow-hidden"
@@ -158,22 +152,22 @@ const About = () => {
               data-aos-delay="2100"
             >
               <li data-aos="fade-right" data-aos-delay="2200">
-                Freight Forwarding (Air, Sea, and Land)
+                {t("about.freightForwarding")}
               </li>
               <li data-aos="fade-left" data-aos-delay="2300">
-                Customs Clearance & Compliance
+                {t("about.customsClearance")}
               </li>
               <li data-aos="fade-right" data-aos-delay="2400">
-                Warehousing & Distribution
+                {t("about.warehousing")}
               </li>
               <li data-aos="fade-left" data-aos-delay="2500">
-                E-commerce Fulfillment
+                {t("about.ecommerceFulfillment")}
               </li>
               <li data-aos="fade-right" data-aos-delay="2600">
-                Last-Mile Delivery
+                {t("about.lastMileDelivery")}
               </li>
               <li data-aos="fade-left" data-aos-delay="2700">
-                Supply Chain Management Consulting
+                {t("about.supplyChainConsulting")}
               </li>
             </ul>
           </section>
@@ -188,7 +182,7 @@ const About = () => {
               data-aos="fade-right"
               data-aos-delay="2900"
             >
-              Why Choose Us
+              {t("about.whyChooseUs")}
             </h2>
             <div
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-gray-700 text-base sm:text-lg overflow-hidden"
@@ -196,28 +190,27 @@ const About = () => {
               data-aos-delay="3000"
             >
               <div data-aos="fade-right" data-aos-delay="3100">
-                <h3 className="font-bold text-blue-500">Experienced Team</h3>
+                <h3 className="font-bold text-blue-500">{t("about.experiencedTeam")}</h3>
                 <p className="text-gray-400">
-                  Decades of combined logistics expertise.
+                  {t("about.experiencedTeamDescription")}
                 </p>
               </div>
               <div data-aos="fade-left" data-aos-delay="3200">
-                <h3 className="font-bold text-blue-500">Technology-Driven</h3>
+                <h3 className="font-bold text-blue-500">{t("about.technologyDriven")}</h3>
                 <p className="text-gray-400">
-                  Real-time tracking and inventory management tools.
+                  {t("about.technologyDrivenDescription")}
                 </p>
               </div>
               <div data-aos="fade-right" data-aos-delay="3300">
-                <h3 className="font-bold text-blue-500">Customer-Focused</h3>
+                <h3 className="font-bold text-blue-500">{t("about.customerFocused")}</h3>
                 <p className="text-gray-400">
-                  Tailored solutions and dedicated support.
+                  {t("about.customerFocusedDescription")}
                 </p>
               </div>
               <div data-aos="fade-left" data-aos-delay="3400">
-                <h3 className="font-bold text-blue-500">Global Network</h3>
+                <h3 className="font-bold text-blue-500">{t("about.globalNetwork")}</h3>
                 <p className="text-gray-400">
-                  Strong international partnerships for smooth cross-border
-                  shipping.
+                  {t("about.globalNetworkDescription")}
                 </p>
               </div>
             </div>
@@ -233,17 +226,14 @@ const About = () => {
               data-aos="fade-right"
               data-aos-delay="3600"
             >
-              Our Story
+              {t("about.ourStory")}
             </h2>
             <p
               className="text-base sm:text-lg text-gray-400"
               data-aos="fade-left"
               data-aos-delay="3700"
             >
-              Founded in 20XX, Bode Logistics began with a single truck and a
-              bold vision: to transform logistics in Africa and beyond. Today,
-              we proudly serve hundreds of clients across industries including
-              retail, agriculture, manufacturing, and e-commerce.
+              {t("about.ourStoryDescription")}
             </p>
           </section>
 
@@ -257,7 +247,7 @@ const About = () => {
               data-aos="fade-right"
               data-aos-delay="3900"
             >
-              Our Values
+              {t("about.ourValues")}
             </h2>
             <ul
               className="list-disc list-inside text-gray-400 space-y-2 text-base sm:text-lg overflow-hidden"
@@ -265,20 +255,17 @@ const About = () => {
               data-aos-delay="4000"
             >
               <li data-aos="fade-right" data-aos-delay="4100">
-                <strong className="text-gray-600">Reliability:</strong> We keep
-                our promises and deliver on time.
+                <strong className="text-gray-600">{t("about.reliability")}</strong> {t("about.reliabilityDescription")}
               </li>
               <li data-aos="fade-left" data-aos-delay="4200">
-                <strong className="text-gray-600">Innovation:</strong> Embracing
-                technology to stay ahead.
+                <strong className="text-gray-600">{t("about.innovation")}</strong> {t("about.innovationDescription")}
               </li>
               <li data-aos="fade-right" data-aos-delay="4300">
-                <strong className="text-gray-600">Integrity:</strong> Honesty
-                and transparency in every shipment.
+                <strong className="text-gray-600">{t("about.integrity")}</strong> {t("about.integrityDescription")}
               </li>
               <li data-aos="fade-left" data-aos-delay="4400">
-                <strong className="text-gray-600">Sustainability:</strong>{" "}
-                Committed to eco-friendly logistics solutions.
+                <strong className="text-gray-600">{t("about.sustainability")}</strong>{" "}
+                {t("about.sustainabilityDescription")}
               </li>
             </ul>
           </section>
@@ -293,16 +280,14 @@ const About = () => {
               data-aos="fade-right"
               data-aos-delay="4600"
             >
-              Let’s Move Forward Together
+              {t("about.moveForwardTogether")}
             </h2>
             <p
               className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto"
               data-aos="fade-left"
               data-aos-delay="4700"
             >
-              At Bode Logistics, we believe logistics is more than just moving
-              goods — it’s about connecting people, markets, and possibilities.
-              Join us on the journey.
+              {t("about.moveForwardDescription")}
             </p>
           </div>
         </div>
