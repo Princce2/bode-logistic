@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import { StrictMode, useEffect } from "react";
 import Login from "./pages/login";
-import MouseFollower from "./components/MouseFollower";
+import MouseFollower from "./components/Mousefollower.jsx";
 import Navbar from "./components/navbar";
 import Create from "./pages/create";
 import About from "./pages/about";
