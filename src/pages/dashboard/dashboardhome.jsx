@@ -13,7 +13,7 @@ const DashboardHome = () => {
           features all in one place.
         </p>
       </header>
-      <main className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <section className="bg-[#1F2937] rounded-xl shadow-lg p-8 flex flex-col justify-center items-center">
           <h2 className="text-2xl font-bold mb-4">Track Shipments</h2>
           <p className="text-gray-400 mb-6 text-center">
@@ -21,6 +21,15 @@ const DashboardHome = () => {
           </p>
           <Link to="/track" className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition duration-300 inline-block text-center">
             Go to Tracking
+          </Link>
+        </section>
+        <section className="bg-[#1F2937] rounded-xl shadow-lg p-8 flex flex-col justify-center items-center">
+          <h2 className="text-2xl font-bold mb-4">User Profile</h2>
+          <p className="text-gray-400 mb-6 text-center">
+            View your account information and manage your profile settings.
+          </p>
+          <Link to="/dashboard/users" className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl font-semibold transition duration-300 inline-block text-center">
+            View Profile
           </Link>
         </section>
         <section className="bg-[#1F2937] rounded-xl shadow-lg p-8 flex flex-col justify-center items-center">

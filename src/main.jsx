@@ -21,6 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Track from "./pages/track.jsx";
 import Dispatch from "./pages/dispatch.jsx"
 import Contact from "./pages/contact.jsx"
+import Users from "./pages/dashboard/users.jsx"
 
 const AOSApp = () => {
   useEffect(() => {
@@ -44,6 +45,7 @@ const AOSApp = () => {
             <Route index element={<Dashboardhome />} />
             <Route path="dispatch" element={<DashboardDispatch />} />
             <Route path="analytics" element={<DashboardAnalytics />} />
+            <Route path="users" element={<Users />} />
           </Route>
           <Route path="/" element={<App />} />
           <Route path="/login" element={<Login />} />
@@ -53,6 +55,7 @@ const AOSApp = () => {
           <Route path="/track" element={<Track />} />
           <Route path="/dispatch" element={<Dispatch />} />
           <Route path="/contact" element={<Contact />} />
+
         </Routes>
         <ToastContainer
           position="top-right"

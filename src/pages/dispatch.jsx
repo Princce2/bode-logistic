@@ -41,7 +41,7 @@ const DispatchShipment = () => {
       content: content,
       weight: parseFloat(weight),
       note: note,
-      delievery_date: deliveryDate,
+      delivery_date: deliveryDate,
       new_recipient: {
         full_name: fullName,
         address: address,
